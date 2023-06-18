@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Header = (baslik, tarih, yazi) => {
   // GÖREV 1
   // ---------------------
@@ -11,9 +13,29 @@ const Header = (baslik, tarih, yazi) => {
   //    <span class="temp">{ yazi }</span>
   //  </div>
   //
-}
 
-const headerEkleyici = (secici) => {
+  const div = document.createElement('div');
+  div.classList.add('header');
+
+  const spanDate = document.createElement('span');
+  spanDate.classList.add('date');
+  spanDate.textContent = tarih;
+
+  const h1 = document.createElement('h1');
+  h1.textContent = baslik;
+
+  const spanTemp = document.createElement('span');
+  spanTemp.classList.add('temp');
+  spanTemp.textContent = yazi;
+
+  div.appendChild(spanDate);
+  div.appendChild(h1);
+  div.appendChild(spanTemp);
+
+  return div;
+};
+
+const headerEkleyici = (secici, baslik, tarih, yazi) => {
   // GÖREV 2
   // ---------------------
   // Tek argümanı olarak bir css seçici alan bu fonksiyonu uygulayın.
@@ -23,7 +45,9 @@ const headerEkleyici = (secici) => {
 
   // İPUCU: querySelector bir string alabilir (bknz: querySelector("#wrapper")) 
   // fakat aynı zamanda bir değişken de alabilir (bknz: querySelector(secici))
- 
+
+const seciciDom = document.querySelector(secici);
+seciciDom.appendChild(Header("Teknoloji Zamanı","10 Haziran 2023","Güncel Teknoloji Haberleri"));
 }
 
 export { Header, headerEkleyici }
